@@ -5,4 +5,5 @@ Design and implement common e-commerce RESTful API.
 
 ## Technology stack
 - NodeJS
-- ExpressJS or Restify or anything else
+- ExpressJS
+- MongoDB
