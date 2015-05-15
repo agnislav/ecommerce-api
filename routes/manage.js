@@ -2,7 +2,7 @@
 
 var express   = require('express');
 var router    = express.Router();
-var dbManager = require('../lib/dbManager');
+var dbManager = require('../lib/DatabaseManager');
 
 /* GET index. */
 router.get('/', function (req, res) {
