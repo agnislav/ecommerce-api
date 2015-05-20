@@ -1,3 +1,5 @@
+// TODO: rewrite for Jasmine and move close to the module tested
+
 var expect = require('expect.js');
 //var test = require('unit.js');
 
