@@ -1,4 +1,0 @@
-[
-  {"id": "laptops", "name": "Laptops"},
-  {"id": "laptops-toshiba", "name": "Toshiba", "parentID": "laptops"}
-]
