@@ -34,6 +34,7 @@ module.exports.flush = function (cb) {
 
   var collection = require('../../config/db/products.json');
 
+  // todo: reimplement with promises
   this.remove({}, function (err) {
     if (err) {
       console.log(err);

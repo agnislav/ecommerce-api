@@ -2,7 +2,8 @@
 
 var express   = require('express');
 var router    = express.Router();
-var dbManager = require('../lib/DatabaseManager');
+var Product = require('../models/product');
+var Category = require('../models/category');
 
 /* GET index. */
 router.get('/', function (req, res) {
@@ -11,11 +12,11 @@ router.get('/', function (req, res) {
 
 /* GET product by id. */
 router.get('/db/flush', function (req, res) {
-  dbManager.flushDB(function (err, result) {
-    if (err === null) {
-      res.json(result);
-    }
+  // todo: rewrite this with promises and send status when all db changes will be done
+  Product.flush(function (err, result) {
+    res.json( err === null ? result : err );
   });
+  Category.flush(function () {});
 });
 
 module.exports = router;
