@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/lightcom');
+var db = mongoose.connection;
+
 var routes = require('./routes/index');
 var apiV1 = require('./routes/api_v1');
 var manage = require('./routes/manage');
