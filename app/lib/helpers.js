@@ -1,7 +1,8 @@
 /**
  * Created by Agnislav Onufrijchuk on 25.05.2015.
  */
-var path = require('path');
+"use strict";
+
 module.exports = function() {
   /**
    * Require a module using a path relative to /app/
@@ -9,6 +10,15 @@ module.exports = function() {
    * @returns {*}
    */
   global.appRequire = function(name) {
-    return require(path.join(__dirname, '..',  name));
+    return require(appPath(name));
   };
+
+  /**
+   * Returns a path relative to app directory
+   * @param path
+   * @returns {string}
+   */
+  global.appPath = function (path) {
+    return require('path').join(__dirname, '..', path);
+  }
 }();

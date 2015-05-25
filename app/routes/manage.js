@@ -1,9 +1,10 @@
 'use strict';
 
-var express  = require('express');
-var router   = express.Router();
-var Product  = appRequire('models/product');
-var Category = appRequire('models/category');
+var router = require('express').Router();
+var fs     = require('fs');
+var async  = require('async');
+//var Product  = appRequire('models/product');
+//var Category = appRequire('models/category');
 
 /* GET index. */
 router.get('/', function (req, res) {
@@ -12,11 +13,15 @@ router.get('/', function (req, res) {
 
 /* GET product by id. */
 router.get('/db/flush', function (req, res) {
-  // todo: rewrite this with promises and send status when all db changes will be done
-  Product.flush(function (err, result) {
-    res.json(err === null ? result : err);
-  });
-  Category.flush(function () {
+  fs.readdirSync(appPath('models'), function (schemas) {
+    async.each(
+        schemas,
+        function (schema, cb) {
+          appRequire('models/' + schema).flush() && cb();
+        },
+        function (err) {
+          res.json(err ? err : {message: 'db flushed'});
+        });
   });
 });
 
