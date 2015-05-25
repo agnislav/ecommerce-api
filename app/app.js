@@ -6,10 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 require('./mongoose-init');
-
-var routes = require('./routes/index');
-var apiV1 = require('./routes/api_v1');
-var manage = require('./routes/manage');
+require('./lib/helpers');
 
 var app = express();
 
@@ -25,9 +22,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/', routes); // todo: do we really need this?
-app.use('/v1', apiV1);
-app.use('/manage', manage);
+// set up routes
+app.use('/', require('./routes/index'));
+app.use('/v1', require('./routes/api_v1'));
+app.use('/manage', require('./routes/manage'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

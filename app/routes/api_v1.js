@@ -1,9 +1,9 @@
 'use strict';
 
-var express   = require('express');
-var router    = express.Router();
-var Product = require('../models/product');
-var Category = require('../models/category');
+var express  = require('express');
+var router   = express.Router();
+var Product  = appRequire('models/product');
+var Category = appRequire('models/category');
 
 /* GET index. */
 router.get('/', function (req, res) {

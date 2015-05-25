@@ -1,9 +1,9 @@
 'use strict';
 
-var express   = require('express');
-var router    = express.Router();
-var Product = require('../models/product');
-var Category = require('../models/category');
+var express  = require('express');
+var router   = express.Router();
+var Product  = appRequire('models/product');
+var Category = appRequire('models/category');
 
 /* GET index. */
 router.get('/', function (req, res) {
@@ -14,9 +14,10 @@ router.get('/', function (req, res) {
 router.get('/db/flush', function (req, res) {
   // todo: rewrite this with promises and send status when all db changes will be done
   Product.flush(function (err, result) {
-    res.json( err === null ? result : err );
+    res.json(err === null ? result : err);
   });
-  Category.flush(function () {});
+  Category.flush(function () {
+  });
 });
 
 module.exports = router;
