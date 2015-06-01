@@ -15,10 +15,10 @@ module.exports = function() {
 
   /**
    * Returns a path relative to app directory
-   * @param path
+   * @param relPath
    * @returns {string}
    */
-  global.appPath = function (path) {
-    return require('path').join(__dirname, '..', path);
+  global.appPath = function (relPath) {
+    return require('path').join(__dirname, '..', relPath);
   }
 }();

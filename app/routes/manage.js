@@ -13,11 +13,12 @@ router.get('/', function (req, res) {
 
 /* GET product by id. */
 router.get('/db/flush', function (req, res) {
-  fs.readdirSync(appPath('models'), function (schemas) {
-    async.each(
+  fs.readdir(appPath('models'), function (err, schemas) {
+    // todo: add error handling
+    schemas && async.each(
         schemas,
         function (schema, cb) {
-          appRequire('models/' + schema).flush() && cb();
+          appRequire('models/' + schema).flush(cb);
         },
         function (err) {
           res.json(err ? err : {message: 'db flushed'});
