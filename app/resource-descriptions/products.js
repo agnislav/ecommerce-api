@@ -4,8 +4,7 @@
 module.exports = {
   urlTemplates: {
     "self": "/products/{id}",
-    "relationship": "/products/{ownerId}/relationships/{path}",
-    "related": "/products/{ownerId}/{path}"
+    "relationship": "/products/{ownerId}/{path}"
   }
 };
 //module.exports = {

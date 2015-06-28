@@ -10,14 +10,18 @@ var CategorySchema = mongoose.Schema({
     index: true
   },
   name: String,
-  parent: {
+  parentCategory: {
     type: mongoose.Schema.Types.Mixed,
     ref: 'Category'
   },
-  products: {
+  subcategories: [{
+    type: mongoose.Schema.Types.Mixed,
+    ref: 'Category'
+  }],
+  products: [{
     type: mongoose.Schema.Types.Mixed,
     ref: 'Product'
-  }
+  }]
 });
 
 var Category = module.exports = mongoose.model('Category', CategorySchema, 'categories');
