@@ -5,10 +5,14 @@ var mongoose = require('mongoose');
 var db       = mongoose.connection;
 
 var ProductSchema = mongoose.Schema({
-  id: {
-    type: String,
+  _id: {
+    type: mongoose.Schema.Types.Mixed,
     index: true
   },
+  categories: [{
+    type: mongoose.Schema.Types.Mixed,
+    ref: 'Category'
+  }],
   name: String,
   description: String,
   price: {
@@ -18,4 +22,4 @@ var ProductSchema = mongoose.Schema({
   }
 });
 
-var Product = module.exports = mongoose.model('Product', ProductSchema);
+module.exports = mongoose.model('Product', ProductSchema);

@@ -1,11 +1,23 @@
 [
   {
-    "id": 1,
+    "_id": "product1",
+    "categories": ["laptops"],
     "name": "Product #1",
     "description": "Description for the product",
     "price": {
       "currency": "USD",
       "value": 1.99,
+      "format": "$[[value]]"
+    }
+  },
+  {
+    "_id": "product2",
+    "categories": ["laptops", "laptops-toshiba"],
+    "name": "Product #2",
+    "description": "Description for the second product",
+    "price": {
+      "currency": "USD",
+      "value": 4.99,
       "format": "$[[value]]"
     }
   }

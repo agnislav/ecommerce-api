@@ -1,4 +1,4 @@
 [
-  {"id": "laptops", "name": "Laptops"},
-  {"id": "laptops-toshiba", "name": "Toshiba", "parentID": "laptops"}
+  {"_id": "laptops", "name": "Laptops", "products": ["product1", "product2"]},
+  {"_id": "laptops-toshiba", "name": "Toshiba", "parent": "laptops", "products": ["product2"]}
 ]

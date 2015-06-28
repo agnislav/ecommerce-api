@@ -17,6 +17,7 @@
     "jade": "~1.9.2",
     "jasmine-core": "^2.3.4",
     "jasmine-node": "^1.14.5",
+    "json-api": "^2.6.0",
     "karma": "^0.12.32",
     "karma-jasmine": "^0.3.5",
     "mongodb": "~1.4",
