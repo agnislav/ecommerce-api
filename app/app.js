@@ -4,6 +4,7 @@ var favicon      = require('serve-favicon');
 var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
+var lcAPI        = require('lightcom-api');
 
 var handlebars = require('express-handlebars');
 var hbOpts     = {
@@ -13,8 +14,8 @@ var hbOpts     = {
 
 var app = express();
 
-require('./mongoose-init');
-require('./lib/helpers');
+//require('./mongoose-init');
+//require('./lib/helpers');
 
 app.engine('.hbs', handlebars(hbOpts));
 app.set('view engine', '.hbs');
@@ -31,8 +32,12 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 // set up routes
 app.use('/', require('./routes/index'));
-app.use('/v1', require('./routes/api_v1'));
-app.use('/manage', require('./routes/manage'));
+
+lcAPI.connect('mongodb://localhost/lightcom');
+app.use('/v1', lcAPI.API);
+//app.use('/v1', require('./routes/api_v1'));
+app.use('/manage', lcAPI.manage);
+//app.use('/manage', require('./routes/manage'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
