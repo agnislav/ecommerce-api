@@ -1,5 +1,5 @@
 {
-  "name": "ecommerce-api",
+  "name": "lightcom",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -20,6 +20,8 @@
     "json-api": "^2.6.0",
     "karma": "^0.12.32",
     "karma-jasmine": "^0.3.5",
+    "lightcom-api": "file:..\\lightcom-api",
+    "mongoose": "^4.0.6",
     "morgan": "~1.5.1",
     "serve-favicon": "~2.2.0",
     "superagent": "^1.2.0",
